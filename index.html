@@ -261,7 +261,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">1</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">2</span></a>
 
   </li>
 
@@ -326,6 +326,202 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/Ubuntu18.04编译VASP5.4.4的详细步骤/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cyh">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Breaking Bad">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/18/Ubuntu18.04编译VASP5.4.4的详细步骤/" class="post-title-link" itemprop="url">Ubuntu18.04编译VASP5.4.4的详细步骤</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-18 22:07:54" itemprop="dateCreated datePublished" datetime="2019-10-18T22:07:54+08:00">2019-10-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-19 00:00:42" itemprop="dateModified" datetime="2019-10-19T00:00:42+08:00">2019-10-19</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文直接使用较新版本的 Intel® Parallel Studio XE 工具集进行编译，无需辅助的 fftw 和 openmpi</p>
+<p>本文主要参考<a href="https://myvivi.life/2019/02/20/VASP_Compile_Guide_V2.1/#vasp" target="_blank" rel="noopener">【VASP】给真·小白看的VASP本地编译自学指南 Ver 2.1</a></p>
+<p>所用安装包为 parallel_studio_xe_2019_update1_cluster_edition.tgz 和 vasp.5.4.4.tar.gz</p>
+<h2 id="编译环境准备"><a href="#编译环境准备" class="headerlink" title="编译环境准备"></a>编译环境准备</h2><h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><h4 id="更新软件并安装一些必备库"><a href="#更新软件并安装一些必备库" class="headerlink" title="更新软件并安装一些必备库"></a>更新软件并安装一些必备库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update <span class="comment"># 更新软件包的源地址</span></span><br><span class="line">sudo apt-get upgrade <span class="comment"># 升级已安装的所有软件包</span></span><br><span class="line">sudo apt-get install build-essential</span><br><span class="line">sudo apt-get install libstdc++5</span><br><span class="line">sudo apt-get install openjdk-8-jre</span><br><span class="line">sudo apt-get install g++</span><br><span class="line">sudo apt-get install gcc</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装Intel编译环境"><a href="#安装Intel编译环境" class="headerlink" title="安装Intel编译环境"></a>安装Intel编译环境</h3><h4 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar –xvzf parallel_studio_xe_2019_update1_cluster_edition.tgz</span><br></pre></td></tr></table></figure>
+
+<h4 id="进入安装包目录进行安装"><a href="#进入安装包目录进行安装" class="headerlink" title="进入安装包目录进行安装"></a>进入安装包目录进行安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+
+<p>空格+回车，按照默认操作进行，安装完成程序自动退出</p>
+<h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><p>在主文件夹 home 中按ctrl+h，显示隐藏文件夹，打开 .bashrc ，在其末尾添加（注意安装后的 intel 目录）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /home/cyh/intel/bin/compilervars.sh intel64 <span class="comment"># 启用intel编译器</span></span><br><span class="line"><span class="built_in">source</span> /home/cyh/intel/mkl/bin/mklvars.sh intel64 <span class="comment"># 启用mkl编译器</span></span><br></pre></td></tr></table></figure>
+
+<p>退出并保存 .bashrc 。再使其生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>检查是否编译成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> ifort</span><br><span class="line"><span class="built_in">which</span> icc</span><br><span class="line"><span class="built_in">which</span> mpi</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$MKLROOT</span></span><br></pre></td></tr></table></figure>
+
+<p>显示路径即编译成功</p>
+<h3 id="编译Intel-fftw3"><a href="#编译Intel-fftw3" class="headerlink" title="编译Intel fftw3"></a>编译Intel fftw3</h3><p>进入 intel 目录中的 fftw3xf 文件夹内 /home/cyh/intel/mkl/interfaces/fftw3xf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make libintel64</span><br></pre></td></tr></table></figure>
+
+<p>生成 libfftw3.intel.a</p>
+<h2 id="编译VASP"><a href="#编译VASP" class="headerlink" title="编译VASP"></a>编译VASP</h2><h4 id="解压安装包-1"><a href="#解压安装包-1" class="headerlink" title="解压安装包"></a>解压安装包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar –xvzf vasp.5.4.4.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>将解压后的 vasp.5.4.4 文件夹移动到 home 文件夹中</p>
+<h4 id="获取-makefile-文件"><a href="#获取-makefile-文件" class="headerlink" title="获取 makefile 文件"></a>获取 makefile 文件</h4><p>进入 /home/vasp.5.4.4/arch ,复制 makefile.include.linux_intel 到上一级目录 /home/vasp.5.4.4 中，并重命名为 makefile.include</p>
+<h4 id="获取管理员权限"><a href="#获取管理员权限" class="headerlink" title="获取管理员权限"></a>获取管理员权限</h4><p>在 /home/vasp.5.4.4 中打开终端</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></figure>
+
+<h4 id="确认环境变量"><a href="#确认环境变量" class="headerlink" title="确认环境变量"></a>确认环境变量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /home/cyh/intel/bin/compilervars.sh intel64</span><br><span class="line"><span class="built_in">source</span> /home/cyh/intel/mkl/bin/mklvars.sh intel64</span><br></pre></td></tr></table></figure>
+
+<h4 id="进行编译"><a href="#进行编译" class="headerlink" title="进行编译"></a>进行编译</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make veryclean</span><br><span class="line">make all</span><br></pre></td></tr></table></figure>
+
+<p>编译完成后在 /home/vasp.5.4.4/bin 中生成 vasp_gam, vasp_ncl 和 vasp_std</p>
+<h4 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h4><p>打开 .bashrc ，在其末尾添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/home/vasp.5.4.4/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+
+<p>退出并保存 .bashrc 。再使其生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -522,7 +718,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
