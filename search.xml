@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[博客上传文章的步骤]]></title>
+    <url>%2F2019%2F10%2F18%2F%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%BC%A0%E6%96%87%E7%AB%A0%E7%9A%84%E6%AD%A5%E9%AA%A4%2F</url>
+    <content type="text"><![CDATA[#博客上传文章的步骤 1.在myblog文件夹中右键Git Bash Here 2.生成新文件 $ hexo new “Article Name” 3.在\myblog\source_posts中出现Article-Name.md 4.编辑.md文件(atom中使用快捷键Shift + Ctrl + M进行预览) 5.生成静态HTML文件 $ hexo generate 6.运行博客，查看效果 $ hexo server]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F05%2F30%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
